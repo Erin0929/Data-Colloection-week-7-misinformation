@@ -1,5 +1,5 @@
 ---
-title: "Data Collection-Week 7-Misinformation"
+title: "Data Collection-Week 7-misinformation"
 author: "Ruiping Ma"
 date: "2024-03-07"
 output: html_document
@@ -11,17 +11,24 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(readr)
 
-misinfo_d <- read_csv('../data/life-under-lockdown-wave2-extract.csv)
+misinfo_d <- read.csv('Adobe/week 7/data/life-under-lockdown-wave2-extract.csv')
 
-misinfo %/%
+```{r}
+misinfo_d %>%
+  ggplot(aes(x-beliefs))
+geom_histogram(bins=6)
+
+```{r}
+misinfo_d %>%
+  ggplot(aes(x-gender))
+geom_bar()
+
+```{r}
+misinfo_d %>%
+  filter(gender %in% c('Female','male')) %<%
+  t.text(formula = beliefs ~ gender, data = .)
 
 ```
-
-
-
-
-```
-
 
 ## R Markdown
 
@@ -42,6 +49,3 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
-
