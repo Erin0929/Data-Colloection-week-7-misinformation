@@ -36,4 +36,6 @@ misinfo_d %>%
   t.test(formula = beliefs ~ gender, data = . )
 ```
 
+
 In the sample, males had more misinformation beliefs(M=0.73) than females (M=0.61), but this was not statistically significant, t(491.3).
+问题：关于最后的t-text编写，p-value是什么意思，以及其他数据是什么意思。
