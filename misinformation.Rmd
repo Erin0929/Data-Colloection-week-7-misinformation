@@ -8,44 +8,28 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
+install.packages("ggplot2")
+
+
 library(dplyr)
 library(readr)
+library(ggplot2)
 
-misinfo_d <- read.csv('Adobe/week 7/data/life-under-lockdown-wave2-extract.csv')
-
-```{r}
-misinfo_d %>%
-  ggplot(aes(x-beliefs))
-geom_histogram(bins=6)
+misinfo_d <- read.csv('../data/life-under-lockdown-wave2-extract.csv')
 
 ```{r}
 misinfo_d %>%
-  ggplot(aes(x-gender))
-geom_bar()
+  ggplot(aes(x = beliefs))+
+  geom_histogram(bins=6)
 
 ```{r}
 misinfo_d %>%
-  filter(gender %in% c('Female','male')) %<%
-  t.text(formula = beliefs ~ gender, data = .)
+  ggplot(aes(x = gender))+
+  geom_bar()
 
+```{r}
+misinfo_d %>%
+  filter(gender %in% c('Female','male'))
+  t.text(formula = beliefs ~ gender, data = filtered_data)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
