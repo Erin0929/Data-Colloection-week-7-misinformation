@@ -69,14 +69,14 @@ misinfo_d %>%
 
 ```
 
-There was a statistically significant moderate negative correlation between number of misinformation beliefs and age, r(498) = -.24, p < .001.
+There was a statistically significant moderate negative correlation between number of misinformation beliefs and age, r(498) = -.24, p < .001. This is appears to be accounted for by the very small number of older people with high numbers of misinformation beliefs. Across all ages, the bulk of respondents has few or none, but the respondents with high numbers of misinformation beliefs were almost all relatively young.
 
 # Association of number of misinformation beliefs with amount of knowledge gathered from Facebook
 ## Hypothesis
 It was hypothesised that there would be a positive correlation between number of misinformation beliefs and amount of knowledge gathered from Facebook
 
 ## Methodology
-The rank-moment (or Pearson) coffelation between number of misinformation 
+The rank-moment (or Pearson) coffelation between number of misinformation beliefs and amount of knowledge gathered from Facebook was calculated
 
 ## Findings
 ```{r}
@@ -84,5 +84,28 @@ misinfo_d %>%
   ggplot(aes(x = age, y = beliefs)) +
   geom_jitter()
 
+```
+```{r}
+misinfo_d <- misinfo_d %>%
+  mutate(
+    know_facebook_coded = know_facebook %>%
+      recode(
+        "Nothing at all" = 0,
+        "Not very much" = 1,
+        "A fair amount" =2,
+        "A great deal" =3
+      )
+  )
+
+misinfo_d %>%
+  cor.test(
+    formula = ~ beliefs + know_facebook_coded,
+    data = .,
+    method ='spearman'
+  )
+  
 
 ```
+
+There was a statistically significant moderate positive correlation between number of misinformation beliefs and amount of knowledge gathered from Facebook, rs(498) = .23, p < .001
+
