@@ -12,6 +12,8 @@ library(dplyr)
 library(readr)
 library(ggplot2)
 
+options(scipen = 999)
+
 misinfo_d <- read.csv('../data/life-under-lockdown-wave2-extract.csv')
 ```
 
@@ -54,6 +56,17 @@ In the sample, males had more misinformation beliefs(M=0.73) than females (M=0.6
 It was hupothesised that number of information beliefs would be positively associated with age.
 
 ## Methodology
-The product-moment (or Pierson)
+The product-moment (or Pearson) coffelation between number of misinformation 
 
+## Findings
+```{r}
+misinfo_d %>%
+  cor.test(
+    formula = ~beliefs + age,
+    data =.,
+    method = 'pearson'
+  )
 
+```
+
+There was a statistically significant moderate negative correlation between number of misinformation beliefs and age, r(498) = -.24, p < .001.
