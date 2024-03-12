@@ -82,7 +82,7 @@ The rank-moment (or Pearson) coffelation between number of misinformation
 ```{r}
 misinfo_d %>%
   ggplot(aes(x = age, y = beliefs)) +
-  geom_point()
+  geom_jitter()
 
 
 ```
