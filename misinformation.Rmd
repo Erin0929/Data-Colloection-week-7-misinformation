@@ -15,11 +15,20 @@ library(ggplot2)
 misinfo_d <- read.csv('../data/life-under-lockdown-wave2-extract.csv')
 ```
 
+# Association of number of misinformation beliefs with gender
+## Hypothesis
+It was hypothesised that number og misinformation beliefs would be associated with gender.
+
+## Methodology
+Welth's t-text was used to compare mean numbers of misinformation beliefs for participants.
+
+
 ```{r}
 misinfo_d %>%
   ggplot(aes(x = beliefs))+
   geom_histogram(bins=6)
 ```
+
 
 ```{r}
 misinfo_d %>%
@@ -37,5 +46,14 @@ misinfo_d %>%
 ```
 
 
-In the sample, males had more misinformation beliefs(M=0.73) than females (M=0.61), but this was not statistically significant, t(491.3).
+In the sample, males had more misinformation beliefs(M=0.73) than females (M=0.61), but this was not statistically significant, t(491.31) = -1.201, p=0.230.
 问题：关于最后的t-text编写，p-value是什么意思，以及其他数据是什么意思。
+
+# Association of number of misinformation beliefs with age
+## Hypothesis
+It was hupothesised that number of information beliefs would be positively associated with age.
+
+## Methodology
+The product-moment (or Pierson)
+
+
