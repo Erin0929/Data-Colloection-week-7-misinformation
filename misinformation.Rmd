@@ -119,15 +119,16 @@ misinfo_d %>%
 
 #Association between age and number of misinformation beliefs about the coronavirus, controlling for amount of knowledge about the coronavirus which coms from Facebook
 ```{r}
-misinfo_d %>%
+misinfo_d <- misinfo_d %>%
   mutate(
     know_facebook_binary =
-      know_facebook -- 'A great deal'
-  )
+      as.number (know_facebook -- 'A great deal'))
 ```  
 
 ```{r}
-lm(
-    fomula = beliefs ~ age + know_facebook
-  )
-
+misinfo_d %>%
+  lm(
+    fomula = beliefs ~ age + know_facebook_binary, data = .
+  ) %>%
+  summary
+```
